@@ -1,0 +1,11 @@
+apiVersion: v2
+name: demo-chart
+description: A demo umbrella chart that only installs other charts
+type: application
+version: 0.1.0
+appVersion: "0.0.1"
+
+dependencies:
+  - name: kafka
+    version: "26.8.5"
+    repository: "oci://registry-1.docker.io/bitnamicharts"

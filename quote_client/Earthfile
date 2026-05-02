@@ -1,0 +1,34 @@
+VERSION 0.7
+FROM node:19.5.0-buster-slim 
+WORKDIR /quote-client
+
+deps:
+  COPY --dir src index.html package.json tsconfig.json tsconfig.node.json postcss.config.cjs tailwind.config.cjs vite.config.ts yarn.lock .
+  COPY --dir public .
+  RUN yarn global add typescript
+  RUN yarn
+
+test:
+  FROM +deps
+  RUN ls public/
+  RUN echo TODO: Implement react tests here
+
+build:
+  FROM +deps
+  ARG --required go_server_url 
+  ARG --required rust_server_url 
+  ARG --required python_server_url 
+  ARG --required node_server_url 
+  RUN VITE_RUST_SERVER=$rust_server_url \
+    VITE_GO_SERVER=$go_server_url \
+    VITE_PYTHON_SERVER=$python_server_url \
+    VITE_NODE_SERVER=$node_server_url \
+    yarn build
+  SAVE ARTIFACT dist/ 
+
+docker:
+  FROM nginx:latest 
+  ARG --required tag
+  COPY +build/dist /usr/share/nginx/html/
+  EXPOSE 80 
+  SAVE IMAGE --push ezeev/earthly-react-example:$tag

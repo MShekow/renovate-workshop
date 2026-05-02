@@ -1,0 +1,4 @@
+kafka:
+  # Here we customize the default values.yaml of the Kafka dependency chart
+  commonLabels:
+    app: kafka
