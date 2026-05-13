@@ -23,12 +23,21 @@ If you want to take part in the _mob session_:
 
 Whenever it is your turn, join the _remote desktop_ (VNC) session using your browser. The link to it is posted to the chat.
 
-## Preparation work for _individual_ participants (or the _workshop instructor_)
+## Preparation work for _individual_ participants
 
 If you **don't** want to join the mob but work in your _own_ repository copy (or if you are the instructor), follow these steps:
 
 - Open https://github.com/new/import to make a _copy_ of this repo (_forking_ would work too, but it is less anonymous)
 - Grant access to the Renovate GitHub app to the _repo-copy_
+  - Open https://github.com/apps/renovate -> **Install** (or **Configure**)
+  - Select the _GitHub organization_ of the repo-copy (that's usually your GitHub username)
+  - Choose _Only select repositories_ and select the repo-copy
+  - Click **Save**. You will be redirected to https://developer.mend.io/install, here choose "Renovate only" for the **product** and "Scan and alert" for the **mode**, then _Finish_
+ 
+## Preparation work for the _first driver_
+
+- Connect to the "remote control" (noVNC) as instructed in the Google Doc that contains the links to the workshop material
+- In the VNC session: Grant access to the Renovate GitHub app to the _repo-copy_
   - Open https://github.com/apps/renovate -> **Install** (or **Configure**)
   - Select the _GitHub organization_ of the repo-copy (that's usually your GitHub username)
   - Choose _Only select repositories_ and select the repo-copy
