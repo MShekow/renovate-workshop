@@ -29,19 +29,27 @@ If you **don't** want to join the mob but work in your _own_ repository copy (or
 
 - Open https://github.com/new/import to make a _copy_ of this repo (_forking_ would work too, but it is less anonymous)
 - Grant access to the Renovate GitHub app to the _repo-copy_
-  - Open https://github.com/apps/renovate -> **Install** (or **Configure**)
+  - Open https://github.com/apps/renovate and in the top-right corner of the page click **Install** (or **Configure**)
   - Select the _GitHub organization_ of the repo-copy (that's usually your GitHub username)
   - Choose _Only select repositories_ and select the repo-copy
-  - Click **Save**. You will be redirected to https://developer.mend.io/install, here choose "Renovate only" for the **product** and "Scan and alert" for the **mode**, then _Finish_
+  - Click **Install** (or **Save**)
+  - You will be redirected to https://developer.mend.io/install:
+    - For the **product**, choose "Renovate only"
+    - For the **mode**, choose "Scan and alert"
+    - Click _Finish_
  
 ## Preparation work for the _first driver_
 
 - Connect to the "remote control" (noVNC) as instructed in the Google Doc that contains the links to the workshop material
 - In the VNC session: Grant access to the Renovate GitHub app to the _repo-copy_
-  - Open https://github.com/apps/renovate -> **Install** (or **Configure**)
+  - Open https://github.com/apps/renovate and in the top-right corner of the page click **Install** (or **Configure**)
   - Select the _GitHub organization_ of the repo-copy (that's usually your GitHub username)
   - Choose _Only select repositories_ and select the repo-copy
-  - Click **Save**. You will be redirected to https://developer.mend.io/install, here choose "Renovate only" for the **product** and "Scan and alert" for the **mode**, then _Finish_
+  - Click **Install** (or **Save**)
+  - You will be redirected to https://developer.mend.io/install:
+    - For the **product**, choose "Renovate only"
+    - For the **mode**, choose "Scan and alert"
+    - Click _Finish_
 
 ## Remote desktop preparation work (_workshop instructor only_)
 
@@ -138,12 +146,14 @@ This default behavior of Renovate _could_ be changed. There are various configur
 Assuming that you have extensive test coverage, it makes sense to allow Renovate to automatically merge PRs, given that the CI pipeline passes.
 
 However, it makes sense to first **configure _realistic_ (real-world) PR-merge settings** in your repo-copy, where the `main` branch is protected, forcing all changes to be done via PRs whose branches are up-to-date regarding `main`. To implement this, go to your repo's **Settings** tab, and then Go to **Rules -> Rulesets** and create a new **Branch rule set** with the following settings:
+- _Ruleset name_: Anything you want, e.g., "Protect main"
 - _Enforcement status_: Active
 - _Bypass list_: Add yourself (e.g. "Repository admin"), just for this workshop, to allow yourself to push changes you make to `renovate.json` directly to `main`, without a PR
 - _Target branches_: add the "default branch"
 - In _Branch rules_:
   - Check "Require a pull request before merging"
   - Check "Require status checks to pass". In its _Additional settings_, check "Require branches to be up to date before merging". Add the "run-tests" check to the list of required checks (in the dropdown that shows when you click on "Add checks", type "test" and wait for the auto-complete to suggest "run-tests")
+- Click _Create_
 
 Next, update the `renovate.json` file, adding another `packageRule` that sets `"automerge": true` for updates made to `Dockerfiles` of type _minor_.
 
