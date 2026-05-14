@@ -19,9 +19,9 @@ To become a driver, you need to open a _VNC remote desktop_ connection (browser-
 - Click "Connect" button, then use "workshop" for the password
 - The Google Doc also explains how you should customize the VNC _scaling_ settings
 - In the VNC session, you stay in the _Firefox_ browser at all times. The instructor already prepared a few browser tabs, e.g.,
-  - a logged-in GitHub account, already having imported a copy this repo into the GitHub personal accountwas already imported
+  - a logged-in GitHub account, already having imported a copy this repo into the GitHub personal account
   - This `README-mob-driver.md` file
-  - A VS Code Live Share session
+  - A VS Code Live Share session which grants you access to a writeable terminal that you will use for `git` commands
 
 ## Task-specific links
 
